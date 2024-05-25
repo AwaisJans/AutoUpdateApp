@@ -3,6 +3,12 @@ package com.jans.tiles.app.utils
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.PorterDuff
+import android.graphics.PorterDuffXfermode
+import android.graphics.Rect
+import android.graphics.RectF
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.LayerDrawable
 import android.view.LayoutInflater
@@ -12,6 +18,7 @@ import android.widget.ImageView
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
+
 
 class RVUtils {
     companion object{
@@ -58,6 +65,7 @@ class RVUtils {
 
 
         }
+
         fun bitmapDrawable1(context: Context, backgroundImage: Bitmap, maxHeight: Int): BitmapDrawable {
             return BitmapDrawable(
                 context.resources,
@@ -97,7 +105,29 @@ class RVUtils {
             }
         }
 
+        fun getRoundedCornerBitmap(bitmap: Bitmap, pixels: Int): Bitmap {
+            val output = Bitmap.createBitmap(
+                bitmap.width, bitmap
+                    .height, Bitmap.Config.ARGB_8888
+            )
+            val canvas = Canvas(output)
 
+            val color = -0xbdbdbe
+            val paint = Paint()
+            val rect = Rect(0, 0, bitmap.width, bitmap.height)
+            val rectF = RectF(rect)
+            val roundPx = pixels.toFloat()
+
+            paint.isAntiAlias = true
+            canvas.drawARGB(0, 0, 0, 0)
+            paint.color = color
+            canvas.drawRoundRect(rectF, roundPx, roundPx, paint)
+
+            paint.setXfermode(PorterDuffXfermode(PorterDuff.Mode.SRC_IN))
+            canvas.drawBitmap(bitmap, rect, rect, paint)
+
+            return output
+        }
 
     }
 }
