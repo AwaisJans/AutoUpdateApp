@@ -22,7 +22,6 @@ import com.jans.tiles.app.R
 import com.jans.tiles.app.adapter.DashboardAdapter
 import com.jans.tiles.app.databinding.ActivityTilesScreenBinding
 import com.jans.tiles.app.model.DashboardModel
-import com.jans.tiles.app.utils.RVUtils.Companion.API_KEY_WEATHER
 import com.jans.tiles.app.utils.RVUtils.Companion.getRoundedCornerBitmap
 import com.jans.tiles.app.utils.RVUtils.Companion.readJsonFile
 import com.jans.tiles.app.weather.WeatherService
@@ -88,7 +87,7 @@ class TilesScreen : AppCompatActivity() {
             .create(WeatherService::class.java)
 
         GlobalScope.launch(Dispatchers.IO) {
-            val weatherData = weatherService.getWeather("Peshawar", API_KEY_WEATHER)
+            val weatherData = weatherService.getWeather("Peshawar", getString(R.string.weather_api_key))
             withContext(Dispatchers.Main) {
                 // getting weather data
                 val cityNameStr = "${weatherData.name}, ${formatTimestamp(weatherData.dt)}"
