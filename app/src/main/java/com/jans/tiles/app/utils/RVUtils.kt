@@ -22,6 +22,11 @@ import java.io.InputStreamReader
 
 class RVUtils {
     companion object{
+
+
+        const val API_KEY_WEATHER = "f05195df0792144c11766dc8f5d0ad07"
+
+
         const val FORMULA_ID = 16
         const val URL_FORMULA = "https://gerda-hirsch-woelfl.de/hw-intern/bspapp/leistung_detail.php?leistungId=5"
         const val URL_BASE_FORMULA = "https://gerda-hirsch-woelfl.de/"
