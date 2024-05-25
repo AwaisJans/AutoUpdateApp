@@ -61,7 +61,6 @@ class TilesScreen : AppCompatActivity() {
         )
 
         showWeatherDetails()
-
         // setup RV
         setUpDashboardRV()
 //        // setup buttons
