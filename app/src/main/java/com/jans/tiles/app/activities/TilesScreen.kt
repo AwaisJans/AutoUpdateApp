@@ -80,6 +80,7 @@ class TilesScreen : AppCompatActivity() {
         b.tvTemperature.visibility = INVISIBLE
         b.weatherLoader.visibility = VISIBLE
 
+
         weatherService = Retrofit.Builder()
             .baseUrl("https://api.openweathermap.org/data/2.5/")
             .addConverterFactory(GsonConverterFactory.create())
