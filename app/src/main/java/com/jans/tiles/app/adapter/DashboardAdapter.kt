@@ -70,9 +70,7 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
             ITEM_RT -> RTViewHolder(getViewTypeLayout(R.layout.item_rt, parent))
             else -> throw IllegalArgumentException("Invalid view type")
         }
-
     }
-
 
     override fun getItemViewType(position: Int): Int {
         return when (dashboardItem[position].block) {

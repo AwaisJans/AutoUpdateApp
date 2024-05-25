@@ -4,4 +4,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="bg_color">#F6F3F5</color>
     <color name="bg_cell">#F6F3F5</color>
+
+    <color name="kprogresshud_default_color">#b1000000</color>
+    <color name="kprogresshud_grey_color">#449E9E9E</color>
+
+
 </resources>
