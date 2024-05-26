@@ -22,10 +22,6 @@ import java.io.InputStreamReader
 
 class RVUtils {
     companion object{
-        const val FORMULA_ID = 16
-        const val URL_FORMULA = "https://gerda-hirsch-woelfl.de/hw-intern/bspapp/leistung_detail.php?leistungId=5"
-        const val URL_BASE_FORMULA = "https://gerda-hirsch-woelfl.de/"
-        const val URL_R3 = "https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg"
 
         //        values for all blocks
         const val ITEM_R1 = 1
@@ -43,7 +39,7 @@ class RVUtils {
             return LayoutInflater.from(parent.context).inflate(resourceName, parent, false)
         }
 
-        fun getDrawableResourceId(context: Context, imageNameFromJson: String): Int {
+        private fun getDrawableResourceId(context: Context, imageNameFromJson: String): Int {
             val packageName = context.packageName
             val res = context.resources.getIdentifier(imageNameFromJson, "drawable", packageName)
 
@@ -73,14 +69,23 @@ class RVUtils {
             )
         }
 
-        fun setBGImage(imageName:String, imgBG: ImageView, maxHeight: Int){
+        fun setBGImage(imageName:Any, imgBG: ImageView, maxHeight: Int){
             val context = imgBG.context
-            val backgroundImage: Bitmap = BitmapFactory.decodeResource(
-                context.resources,
-                getDrawableResourceId(context, imageName)
-            )
-            val layerDrawable = LayerDrawable(arrayOf(bitmapDrawable1(context,backgroundImage, maxHeight)))
-            imgBG.background = (layerDrawable)
+            when(imageName){
+                is String -> {
+                    val backgroundImage: Bitmap = BitmapFactory.decodeResource(context.resources,
+                        getDrawableResourceId(context, imageName)
+                    )
+                    val layerDrawable = LayerDrawable(arrayOf(bitmapDrawable1(context,backgroundImage, maxHeight)))
+                    imgBG.background = (layerDrawable)
+                }
+                is Bitmap -> {
+                    val layerDrawable = LayerDrawable(arrayOf(bitmapDrawable1(context,imageName, maxHeight)))
+                    imgBG.background = (layerDrawable)
+                }
+            }
+
+
         }
 
         fun Context.readJsonFile(resourceId: Int): String {
