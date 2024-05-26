@@ -2,5 +2,6 @@
     <string name="app_name">Tiles App</string>
 
     <string name="weather_api_key">f05195df0792144c11766dc8f5d0ad07</string>
+    <string name="permission_string">• ACCESS_COARSE_LOCATION\n• ACCESS_FINE_LOCATION\n• WRITE_EXTERNAL_STORAGE\n• READ_EXTERNAL_STORAGE\n• READ_MEDIA_IMAGES \n• READ_MEDIA_VIDEO \n• READ_MEDIA_AUDIO \n• CAMERA</string>
 
 </resources>

@@ -39,7 +39,6 @@ import com.jans.tiles.app.utils.RVUtils.Companion.ITEM_RTF
 import com.jans.tiles.app.utils.RVUtils.Companion.ITEM_RTH
 import com.jans.tiles.app.utils.RVUtils.Companion.ITEM_S1
 import com.jans.tiles.app.utils.RVUtils.Companion.ITEM_S2
-import com.jans.tiles.app.utils.RVUtils.Companion.bitmapDrawable1
 import com.jans.tiles.app.utils.RVUtils.Companion.getViewTypeLayout
 import com.jans.tiles.app.utils.RVUtils.Companion.setBGImage
 import com.jans.tiles.app.utils.RVUtils.Companion.tvWidth
@@ -116,11 +115,8 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
         holder.tv1.text = title
         android.os.Handler(Looper.getMainLooper()).postDelayed({
             val maxHeight = (tvWidth) + 0
-
             setBGImage(dashboardItems.imagename, holder.imgBG, maxHeight)
-            val mainL = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
             holder.itemView.layoutParams.height = maxHeight
-//            mainL.setBackgroundColor(context.resources.getColor(R.color.green))
         }, 50)
     }
 
@@ -130,17 +126,9 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
         paramStaggered.isFullSpan = true
         val title = "${dashboardItems.title}\n${dashboardItems.block}"
         holder.tv1.text = title
-
-
-
-
-
         android.os.Handler(Looper.getMainLooper()).postDelayed({
             val maxHeight = (tvWidth) / 2
             setBGImage(dashboardItems.imagename, holder.imgBG, maxHeight)
-
-            val mainL = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
-//            mainL.setBackgroundColor(context.resources.getColor(R.color.green))
         }, 50)
     }
 
@@ -160,33 +148,13 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
             }
         })
         val layMain = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
-
         android.os.Handler(Looper.getMainLooper()).postDelayed({
-
             paramStaggered.isFullSpan = true
             layMain.layoutParams.height = 504
             tv1.setPadding(0, 80, 0, 80)
             tv1.setTextColor(Color.WHITE)
-
-            Glide.with(holder.itemView.context)
-                .asBitmap()
-                .load(R.drawable.img).placeholder(R.drawable.loading_spinner)
-                .into(object : SimpleTarget<Bitmap>() {
-                    override fun onResourceReady(
-                        resource: Bitmap,
-                        transition: Transition<in Bitmap>?
-                    ) {
-
-                        val maxHeight = 504
-                        val layerDrawable =
-                            LayerDrawable(arrayOf(bitmapDrawable1(context,resource, maxHeight)))
-                        holder.imgBG.background = layerDrawable
-                        val mainL = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
-//                        mainL.setBackgroundColor(context.resources.getColor(R.color.green))
-                    }
-                })
-
-
+            val maxHeight = 504
+            setBGImage(dashboardItems.imagename, holder.imgBG, maxHeight)
             holder.itemView.setOnClickListener {
                 isExpanded = !isExpanded
                 if (isExpanded) {
@@ -232,26 +200,6 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
         imgBG.layoutParams = layoutParamsParent
 
         imgBGChild.layoutParams = layoutParamsChild
-
-
-
-        android.os.Handler(Looper.getMainLooper()).postDelayed({
-//            holder.tv1.layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT
-//            holder.tv1.setPadding(0, 80, 0, 80)
-//            val maxHeight = tvWidth / 2 + 0
-//            val backgroundImage: Bitmap = BitmapFactory.decodeResource(
-//                context.resources,
-//                getDrawableResourceId(context, dashboardItems.imageName)
-//            )
-//            val layerDrawable =
-//                LayerDrawable(arrayOf(bitmapDrawable1(backgroundImage, maxHeight)))
-//            holder.imgBG.background = layerDrawable
-
-
-//            holder.tv1.setTextColor(Color.BLACK)
-//            val mainL = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
-//            mainL.setBackgroundColor(context.resources.getColor(R.color.green))
-        }, 50)
     }
 
     private fun itemRTFCode(holder: RTFViewHolder, dashboardItems: Dashboard) {
@@ -268,10 +216,7 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
             holder.tv1.setPadding(0, 80, 0, 80)
             val maxHeight = tvWidth / 2 + 0
             setBGImage(dashboardItems.imagename, holder.imgBG, maxHeight)
-
             holder.tv1.setTextColor(Color.BLACK)
-            val mainL = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
-//            mainL.setBackgroundColor(context.resources.getColor(R.color.green))
         }, 50)
     }
 
@@ -289,12 +234,7 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
 //            val maxHeight = tvWidth + tvWidth + 126
             val maxHeight = tvWidth - 300
             setBGImage(dashboardItems.imagename, holder.imgBG, maxHeight)
-
             holder.tv1.setTextColor(Color.BLACK)
-            val mainL = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
-//            mainL.setBackgroundColor(context.resources.getColor(R.color.green))
-
-
         }, 50)
     }
 
@@ -304,14 +244,7 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
         android.os.Handler(Looper.getMainLooper()).postDelayed({
             val maxHeight = (tvWidth) / 2
             holder.itemView.layoutParams.height = maxHeight
-
-
             setBGImage(dashboardItems.imagename, holder.imgBG, maxHeight)
-
-
-
-            val mainL = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
-//            mainL.setBackgroundColor(context.resources.getColor(R.color.green))
         }, 50)
     }
 
@@ -321,12 +254,7 @@ class DashboardAdapter(private var dashboardItem: List<Dashboard>) :
         android.os.Handler(Looper.getMainLooper()).postDelayed({
             val maxHeight = (tvWidth) / 2
             holder.itemView.layoutParams.height = maxHeight
-
-
             setBGImage(dashboardItems.imagename, holder.imgBG, maxHeight)
-
-            val mainL = holder.itemView.findViewById<RelativeLayout>(R.id.layMain)
-//            mainL.setBackgroundColor(context.resources.getColor(R.color.green))
         }, 50)
     }
 

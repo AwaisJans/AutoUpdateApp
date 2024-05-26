@@ -24,7 +24,7 @@ data class DashboardModel(
         var id: Int = 0,
         @SerializedName("imagename")
         @Expose
-        var imagename: String = "",
+        var imagename: Any = "",
         @SerializedName("microsite")
         @Expose
         var microsite: Boolean = false,
